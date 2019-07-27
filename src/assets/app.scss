@@ -3,4 +3,16 @@
   border-radius: 0;
   min-height: 50px;
   min-width: 50px;
+  border-color: white;
+
+}
+.btn-primary.disabled, .btn-primary:disabled{
+  border-color: white;
+}
+
+$violet:#563d7c;
+
+.btn-secondary {
+  border-radius: 10px;
+  @include button-variant($violet, darken($violet, 7.5%), darken($violet, 10%), lighten($violet,5%), lighten($violet, 10%), darken($violet,30%));
 }
