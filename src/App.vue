@@ -6,7 +6,7 @@
 
       <div class="row">
 
-        <Menu />
+        <Menu :status="status"/>
 
         <Board />
 
@@ -37,7 +37,8 @@ export default {
   data() {
     return {
       uncoveredPositions: [],
-      time: 0
+      time: 0,
+      status: ''
     }
   },
   created() {
@@ -48,6 +49,7 @@ export default {
       let status = await GameService.getGameStatus();
       this.uncoveredPositions = status.uncoveredPositions;
       this.time = status.elapsedTimeInSeconds;
+      this.status = status.status;
     }
   }
 }
