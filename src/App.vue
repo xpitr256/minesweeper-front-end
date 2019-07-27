@@ -23,6 +23,8 @@ import Header from './components/Header.vue'
 import Menu from './components/Menu.vue'
 import Board from './components/Board.vue'
 import References from './components/References.vue'
+import GameService from './services/GameService'
+
 
 export default {
   name: 'app',
@@ -31,6 +33,22 @@ export default {
     Menu,
     Board,
     References
+  },
+  data() {
+    return {
+      uncoveredPositions: [],
+      time: 0
+    }
+  },
+  created() {
+    this.getGameStatus()
+  },
+  methods: {
+    async getGameStatus() {
+      let status = await GameService.getGameStatus();
+      this.uncoveredPositions = status.uncoveredPositions;
+      this.time = status.elapsedTimeInSeconds;
+    }
   }
 }
 </script>
