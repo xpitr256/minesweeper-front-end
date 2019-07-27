@@ -1,7 +1,5 @@
 <template>
-  <div class="hello">
-
-
+  <div class="col text-center">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-primary" disabled></button>
       <button type="button" class="btn btn-primary"></button>
