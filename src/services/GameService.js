@@ -1,6 +1,7 @@
 import Vue from 'vue'
 
-const baseDomain = 'http://localhost:3000';
+//const baseDomain = 'http://localhost:3000';
+const baseDomain = 'https://minesweeper-api-test.herokuapp.com';
 
 export default {
 
