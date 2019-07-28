@@ -1,8 +1,8 @@
 <template>
     <div class="col text-center">
 
-        <button type="button" class="btn btn-secondary btn-lg btn-block">Start a new Game!</button>
-        <button type="button" class="btn btn-light btn-lg btn-block mt-3">Start test game</button>
+        <button type="button" v-on:click="startNewGame" class="btn btn-secondary btn-lg btn-block">Start a new Game!</button>
+        <button type="button" v-on:click="startTestGame" class="btn btn-light btn-lg btn-block mt-3">Start test game</button>
 
         <div class="card mt-5">
             <div class="card-header">
@@ -20,11 +20,41 @@
 </template>
 
 <script>
+
+  import GameService from './../services/GameService'
+
   export default {
     name: "Menu",
     props: [
       'status'
-    ]
+    ],
+    methods: {
+
+      startNewGame: async function () {
+
+          try {
+            // TODO add confirmation modal first.
+            // TODO activate waiting mode
+
+            let status = await GameService.createNewGame();
+
+            // TODO deactivate waiting mode
+
+          } catch (error) {
+            // TODO deactivate waiting mode
+            // TODO show notification error.
+          }
+      },
+      startTestGame: async function () {
+
+        try {
+          let testGameStatus = await GameService.createTestGame();
+        } catch (error) {
+          //console.error(error)
+        }
+      }
+
+    }
   }
 </script>
 

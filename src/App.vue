@@ -46,10 +46,14 @@ export default {
   },
   methods: {
     async getGameStatus() {
-      let status = await GameService.getGameStatus();
-      this.uncoveredPositions = status.uncoveredPositions;
-      this.time = status.elapsedTimeInSeconds;
-      this.status = status.status;
+      try {
+        let status = await GameService.getGameStatus();
+        this.uncoveredPositions = status.uncoveredPositions;
+        this.time = status.elapsedTimeInSeconds;
+        this.status = status.status;
+      } catch (error) {
+        // TODO show notification error.
+      }
     }
   }
 }
