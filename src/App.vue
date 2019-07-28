@@ -6,7 +6,7 @@
 
       <div class="row">
 
-        <Menu :status="status"/>
+        <Menu :status="status" @newGameStarted="getGameStatus"/>
 
         <Board :uncovered-positions="uncoveredPositions"/>
 

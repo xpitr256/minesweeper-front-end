@@ -36,8 +36,10 @@
             // TODO add confirmation modal first.
             // TODO activate waiting mode
 
-            let status = await GameService.createNewGame();
-
+            let response = await GameService.createNewGame();
+            if (response.status === 'STARTED') {
+              this.$emit('newGameStarted');
+            }
             // TODO deactivate waiting mode
 
           } catch (error) {
@@ -49,6 +51,9 @@
 
         try {
           let testGameStatus = await GameService.createTestGame();
+          if (testGameStatus.status === 'STARTED') {
+            this.$emit('newGameStarted');
+          }
         } catch (error) {
           //console.error(error)
         }

@@ -29,24 +29,32 @@
       }
     },
     methods: {
+      setAllRowAsCovered: function() {
+        this.uncoveredStatuses = [];
+        for (let i = 0; i < this.cellAmount; i++) {
+          this.uncoveredStatuses.push(false);
+        }
+      },
       updateUncoveredPositions: function () {
 
         let myUncoveredPositions = this.uncoveredPositions.filter((uncoveredPosition) => {
           return uncoveredPosition.x === this.rowNumber;
         });
 
-        myUncoveredPositions.forEach((uncoveredPosition) => {
-          this.uncoveredStatuses[uncoveredPosition.y] = true;
-        });
+        if (myUncoveredPositions.length > 0) {
+          myUncoveredPositions.forEach((uncoveredPosition) => {
+            this.uncoveredStatuses[uncoveredPosition.y] = true;
+          });
+        } else {
+          this.setAllRowAsCovered();
+        }
 
         this.uncoveredStatuses = this.uncoveredStatuses.map(uncoveredStatus => uncoveredStatus);
       }
     },
     created: function () {
-      for (let i = 0; i < this.cellAmount; i++) {
-        this.uncoveredStatuses.push(false);
-      }
       // TODO dynamically create each Cell instance until cellAmount value
+      this.setAllRowAsCovered();
     },
     watch:{
         'uncoveredPositions': function() {
