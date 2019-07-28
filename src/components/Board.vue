@@ -1,94 +1,25 @@
 <template>
   <div class="col text-center">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-    </div><br/>
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" disabled></button>
-      <button type="button" class="btn btn-primary"></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-      <button type="button" class="btn btn-primary" ></button>
-    </div><br/>
-
+      <CellRow rowNumber="0" cellAmount="8" /><br/>
+      <CellRow rowNumber="1" cellAmount="8" /><br/>
+      <CellRow rowNumber="2" cellAmount="8" /><br/>
+      <CellRow rowNumber="3" cellAmount="8" /><br/>
+      <CellRow rowNumber="4" cellAmount="8" /><br/>
+      <CellRow rowNumber="5" cellAmount="8" /><br/>
+      <CellRow rowNumber="6" cellAmount="8" /><br/>
+      <CellRow rowNumber="7" cellAmount="8" />
   </div>
 </template>
 
 <script>
+
+import CellRow from "./CellRow";
+
 export default {
   name: 'Board',
+  components: {CellRow},
   props: {
-    msg: String
+    uncoveredPositions: Array
   }
 }
 </script>
