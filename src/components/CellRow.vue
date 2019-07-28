@@ -53,7 +53,7 @@
       }
     },
     created: function () {
-      // TODO dynamically create each Cell instance until cellAmount value
+      // TODO dynamically create each Cell instance
       this.setAllRowAsCovered();
     },
     watch:{

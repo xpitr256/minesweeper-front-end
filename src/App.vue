@@ -45,16 +45,28 @@ export default {
     this.getGameStatus()
   },
   methods: {
+    updateGameStatus(newGameStatus) {
+      this.uncoveredPositions = newGameStatus.uncoveredPositions;
+      this.time = newGameStatus.elapsedTimeInSeconds;
+      this.status = newGameStatus.status;
+      //TODO check game status and show a win / lost message
+    },
     async getGameStatus() {
       try {
         let status = await GameService.getGameStatus();
-        this.uncoveredPositions = status.uncoveredPositions;
-        this.time = status.elapsedTimeInSeconds;
-        this.status = status.status;
+        this.updateGameStatus(status);
       } catch (error) {
         // TODO show notification error.
       }
     }
+  },
+  mounted() {
+    this.$root.$on('cellRevealed', async (position) => {
+      if (this.status === 'STARTED') {
+        let newGameStatus = await GameService.revealPosition(position);
+        this.updateGameStatus(newGameStatus);
+      }
+    });
   }
 }
 </script>
