@@ -1,13 +1,13 @@
 <template>
   <div class="col text-center">
-      <CellRow rowNumber="0" cellAmount="8" /><br/>
-      <CellRow rowNumber="1" cellAmount="8" /><br/>
-      <CellRow rowNumber="2" cellAmount="8" /><br/>
-      <CellRow rowNumber="3" cellAmount="8" /><br/>
-      <CellRow rowNumber="4" cellAmount="8" /><br/>
-      <CellRow rowNumber="5" cellAmount="8" /><br/>
-      <CellRow rowNumber="6" cellAmount="8" /><br/>
-      <CellRow rowNumber="7" cellAmount="8" />
+      <CellRow :row-number=0 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=1 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=2 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=3 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=4 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=5 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=6 :cell-amount=8 :uncovered-positions="uncoveredPositions" /><br/>
+      <CellRow :row-number=7 :cell-amount=8 :uncovered-positions="uncoveredPositions" />
   </div>
 </template>
 
@@ -20,6 +20,9 @@ export default {
   components: {CellRow},
   props: {
     uncoveredPositions: Array
+  },
+  created: function () {
+    // TODO dynamically create each CellRow instance.
   }
 }
 </script>

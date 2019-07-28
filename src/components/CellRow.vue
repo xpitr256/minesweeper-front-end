@@ -1,13 +1,13 @@
 <template>
     <div class="btn-group" role="group">
-        <Cell :x="rowNumber" y="0" />
-        <Cell :x="rowNumber" y="1" />
-        <Cell :x="rowNumber" y="2" />
-        <Cell :x="rowNumber" y="3" />
-        <Cell :x="rowNumber" y="4" />
-        <Cell :x="rowNumber" y="5" />
-        <Cell :x="rowNumber" y="6" />
-        <Cell :x="rowNumber" y="7" />
+        <Cell :x=rowNumber :y=0 :is-uncovered=uncoveredStatuses[0] />
+        <Cell :x=rowNumber :y=1 :is-uncovered=uncoveredStatuses[1] />
+        <Cell :x=rowNumber :y=2 :is-uncovered=uncoveredStatuses[2] />
+        <Cell :x=rowNumber :y=3 :is-uncovered=uncoveredStatuses[3] />
+        <Cell :x=rowNumber :y=4 :is-uncovered=uncoveredStatuses[4] />
+        <Cell :x=rowNumber :y=5 :is-uncovered=uncoveredStatuses[5] />
+        <Cell :x=rowNumber :y=6 :is-uncovered=uncoveredStatuses[6] />
+        <Cell :x=rowNumber :y=7 :is-uncovered=uncoveredStatuses[7] />
     </div>
 </template>
 
@@ -20,10 +20,38 @@
     components: {Cell},
     props:{
       rowNumber: Number,
-      cellAmount: Number
+      cellAmount: Number,
+      uncoveredPositions: Array,
+    },
+    data () {
+      return {
+        uncoveredStatuses: []
+      }
+    },
+    methods: {
+      updateUncoveredPositions: function () {
+
+        let myUncoveredPositions = this.uncoveredPositions.filter((uncoveredPosition) => {
+          return uncoveredPosition.x === this.rowNumber;
+        });
+
+        myUncoveredPositions.forEach((uncoveredPosition) => {
+          this.uncoveredStatuses[uncoveredPosition.y] = true;
+        });
+
+        this.uncoveredStatuses = this.uncoveredStatuses.map(uncoveredStatus => uncoveredStatus);
+      }
     },
     created: function () {
-      // TODO dynamically created each Cell instance until cellAmount value
+      for (let i = 0; i < this.cellAmount; i++) {
+        this.uncoveredStatuses.push(false);
+      }
+      // TODO dynamically create each Cell instance until cellAmount value
+    },
+    watch:{
+        'uncoveredPositions': function() {
+          this.updateUncoveredPositions();
+        }
     }
   }
 </script>

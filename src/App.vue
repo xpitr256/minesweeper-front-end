@@ -8,7 +8,7 @@
 
         <Menu :status="status"/>
 
-        <Board />
+        <Board :uncovered-positions="uncoveredPositions"/>
 
         <References />
 
